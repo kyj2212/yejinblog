@@ -7,7 +7,7 @@ function AboutPage() {
 
     <Layout pageTitle="About Me">
     <p>
-      Hi there! I'm the proud creator of this site, which I built with Gatsby.
+      김예진
     </p>
   </Layout>
 
