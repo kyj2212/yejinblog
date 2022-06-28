@@ -1,8 +1,8 @@
 {
-  "name": "yejin_blog_20220627",
+  "name": "yejin-blog-20220627",
   "version": "1.0.0",
   "private": true,
-  "description": "yejin_blog_20220627",
+  "description": "yejin-blog-20220627",
   "author": "kyj2212",
   "keywords": [
     "gatsby"
@@ -16,6 +16,9 @@
   },
   "dependencies": {
     "gatsby": "^4.17.1",
+    "gatsby-plugin-image": "^2.15.0",
+    "gatsby-plugin-sharp": "^4.17.0",
+    "gatsby-source-filesystem": "^4.17.0",
     "react": "^18.1.0",
     "react-dom": "^18.1.0"
   }
