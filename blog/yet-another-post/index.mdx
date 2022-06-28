@@ -1,0 +1,311 @@
+---
+title: "Git 설정하기"
+description: "Git 설정하는 방법 정리"
+date: 2022-06-28
+hero_image: "./apeach01.jpg"
+hero_image_alt: "apeach crying"
+---
+
+
+# Git 설정하기
+
+```bash
+// git-bash는 bash shell -> bash 명령어 모두 사용
+
+git init : 초기화
+
+git status : 상태(차이점) 확인 // gst
+
+git add : tracking에 추가 //gaa 
+
+git rm --cached  : tracking에서 제거
+
+git commit -m "README 추가"  // github에 commit
+
+// .gitconfig 
+// git config --global user.name "kyj2212"
+// git config --global user.email "kyj2212@gmail.com"
+```
+
+
+
+```bash
+	$ cat .gitconfig
+	[user]
+	        name = kyj2212
+	        email = kyj2212@gmail.com
+```
+
+git log
+
+	```bash
+	kyj01@DESKTOP-SSJAGK2 MINGW64 ~/git-work (master)
+	$ git log
+	commit 65eb757ae36b42aeb7ee883c15762592462618f8 (HEAD -> master)
+	Author: kyj2212 <kyj2212@gmail.com>
+	Date:   Fri Jun 24 14:44:30 2022 +0900
+	
+	    add .gitignore
+	
+	commit 8a5628b44d3e1ab5b9b598056e255c2bcb64c363
+	Author: kyj2212 <kyj2212@gmail.com>
+	Date:   Fri Jun 24 14:31:10 2022 +0900
+	
+	    add README
+	```
+		git checkout -f     // 	
+
+
+
+
+📌 git & github 흐름
+ 
+ [git & github](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/5239cd63-067d-4105-809c-9510cfdcdf53/Untitled.png).
+ 
+ 
+
+
+
+06.27
+
+### Git 복습
+
+
+
+## Git 의 내부 구조
+
+[[Git] 내부 동작 원리에 대한 이해](https://it-eldorado.tistory.com/4)
+
+![https://blog.kakaocdn.net/dn/bocEgR/btqEnJmJLul/7aDHJLQUrj84OUKeIuSv50/img.png](https://blog.kakaocdn.net/dn/bocEgR/btqEnJmJLul/7aDHJLQUrj84OUKeIuSv50/img.png)
+
+> 📚 참고 : gistory → 생활코딩 이고잉
+> 
+
+```java
+pip install gistory
+
+kyj01@DESKTOP-SSJAGK2 MINGW64 ~/git-work (master)
+$ gistory .git
+Bottle v0.13-dev server starting up (using WSGIRefServer())...
+Listening on http://0.0.0.0:8805/
+Hit Ctrl-C to quit.
+
+.git
+C:\Users\kyj01\AppData\Local\Programs\Python\Python39\lib\site-packages\gistory\bottle.py:3611: DeprecationWarning: Flags not at the start of the expression '((?mx)         # ver' (truncated) but at position 1
+  patterns = [re.compile(p % pattern_vars) for p in patterns]
+C:\Users\kyj01\AppData\Local\Programs\Python\Python39\lib\site-packages\gistory\bottle.py:3611: DeprecationWarning: Flags not at the start of the expression '\\{\\{((?:((?mx)      ' (truncated) but at position 9
+  patterns = [re.compile(p % pattern_vars) for p in patterns]
+127.0.0.1 - - [27/Jun/2022 12:03:25] "GET / HTTP/1.1" 200 12363
+127.0.0.1 - - [27/Jun/2022 12:03:26] "GET /static/bootstrap/3.3.4/css/bootstrap.min.css HTTP/1.1" 200 117305
+127.0.0.1 - - [27/Jun/2022 12:03:26] "GET /static/css/font.css HTTP/1.1" 200 866
+127.0.0.1 - - [27/Jun/2022 12:03:26] "GET /static/style.css HTTP/1.1" 200 2125
+127.0.0.1 - - [27/Jun/2022 12:03:26] "GET /static/lity.min.css HTTP/1.1" 200 3383
+127.0.0.1 - - [27/Jun/2022 12:03:26] "GET /static/bootstrap/3.3.4/js/bootstrap.min.js HTTP/1.1" 200 35951
+127.0.0.1 - - [27/Jun/2022 12:03:26] "GET /static/script.js HTTP/1.1" 200 5874
+127.0.0.1 - - [27/Jun/2022 12:03:26] "GET /static/lity.min.js HTTP/1.1" 200 6598
+127.0.0.1 - - [27/Jun/2022 12:03:26] "GET /static/help.png HTTP/1.1" 200 41287
+127.0.0.1 - - [27/Jun/2022 12:03:26] "GET /favicon.ico HTTP/1.1" 404 748
+```
+
+## Git 배우기 게임
+
+[https://learngitbranching.js.org/?locale=ko](https://learngitbranching.js.org/?locale=ko)
+
+### 1. commit
+
+```java
+커밋은 Git 저장소에 여러분의 디렉토리에 있는 모든 파일에 대한 스냅샷을 기록하는 것입니다. 
+디렉토리 전체를 복사하여 붙여넣는것과 유사하지만, 훨씬 유용한 방법입니다!
+
+Git은 가능한 한 커밋을 가볍게 유지하고자 하기때문에, 커밋할 때마다 디렉토리 전체를 복사하진 않습니다.
+각 커밋은 저장소의 이전 버전과 다음 버전의 변경내역("delta"라고도 함)을 저장합니다. 
+그래서 대부분의 커밋이 그 커밋 위의 부모 커밋을 가리킵니다. -- 다음 화면에서 곧 살펴보게 될 것입니다.
+
+저장소를 복제(clone)하려면 모든 변경분(delta)를 풀어내야 하는데, 이 때문에 명령행 결과로 아래 문구를 볼 수 있습니다.
+
+resolving deltas
+
+알아야 할 것이 꽤 많습니다만, 일단은 커밋을 프로젝트의 스냅샷들로 생각하면 충분합니다. 
+커밋은 매우 가볍고 커밋 사이의 전환도 매우 빠르다는 것을 기억해주세요!
+
+```
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/36577d29-ba3b-4b9a-bc31-0a067588ee29/Untitled.png)
+
+1. Branch, checkout
+
+깃의 브랜치도 놀랍도록 가볍습니다. 브랜치는 특정 커밋에 대한 참조(reference)에 지나지 않습니다. 이런 사실 때문에 수많은 Git 애찬론자들이 자주 이렇게 말하곤 합니다:
+
+```
+브랜치를 서둘러서, 그리고 자주 만드세요
+```
+
+브랜치를 많이 만들어도 메모리나 디스크 공간에 부담이 되지 않기 때문에, 여러분의 작업을 커다른 브랜치로 만들기 보다, 작은 단위로 잘게 나누는 것이 좋습니다.
+
+브랜치와 커밋을 같이 쓸 때, 어떻게 두 기능이 조화를 이루는지 알아보겠습니다. 하지만 우선은, 단순히 브랜치를 "하나의 커밋과 그 부모 커밋들을 포함하는 작업 내역"이라고 기억하시면 됩니다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2daecff9-2ae8-4462-9e41-6dd0765e638e/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/87e79db9-ec9b-4b3f-981a-89e8fd941218/Untitled.png)
+
+## 3. 브랜치와 합치기(Merge)
+
+좋습니다! 지금까지 커밋하고 브랜치를 만드는 방법을 알아봤습니다. 이제 두 별도의 브랜치를 합치는 몇가지 방법을 알아볼 차례입니다. 이제부터 배우는 방법으로 브랜치를 따고, 새 기능을 개발 한 다음 합칠 수 있게 될 것입니다.
+
+처음으로 살펴볼 방법은 `git merge`입니다. Git의 합치기(merge)는 두 개의 부모(parent)를 가리키는 특별한 커밋을 만들어 냅니다. 두개의 부모가 있는 커밋이라는 것은 "한 부모의 모든 작업내역과 나머지 부모의 모든 작업, *그리고* 그 두 부모의 모든 부모들의 작업내역을 포함한다"라는 의미가 있습니다.
+
+그림으로 보는게 이해하기 쉬워요. 다음 화면을 봅시다.
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/2f9f61a7-71ed-4be3-8938-e7ec65ab9ac3/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/a291a169-9ac6-4fae-b4fb-c339682d9628/Untitled.png)
+
+![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/e4473df2-84be-4168-9412-80c58eb595cd/Untitled.png)
+
+## 챕터 10 : 충돌과 병합
+
+workspace 간의 충돌을 방지 하기 위해 반드시 `pull` 로 (충돌 시 자동병합, 수동병합)을 먼저 진행 후, 작업을 이행한다.
+
+<aside>
+⭐ 올바른 작업순서
+`git push origin master`                 // 작업 전 pull 필수
+… 작업
+`git add .`                                            // git commit -am “메세지” add 생략가능
+`git commit -m “메세지”`
+`git pull origin master`
+`git push origin master`
+
+</aside>
+
+### ex1)  A work 와 B work 를 강제로 충돌 시킨 경우
+
+```bash
+// A work 와 B work 를 강제로 충돌 시킨 경우
+
+// push 했을 때 rejected 됨
+kyj01@DESKTOP-SSJAGK2 MINGW64 /C/Users/kyj01/IdeaProjects/LionClass01 (master)
+$ git push origin master
+To https://github.com/kyj2212/LionClass.git
+ ! [rejected]        master -> master (fetch first)
+error: failed to push some refs to 'https://github.com/kyj2212/LionClass.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+// pull 을 통해 merge
+kyj01@DESKTOP-SSJAGK2 MINGW64 /C/Users/kyj01/IdeaProjects/LionClass01 (master)
+$ git pull origin master
+remote: Enumerating objects: 5, done.
+remote: Counting objects: 100% (5/5), done.
+remote: Compressing objects: 100% (1/1), done.
+remote: Total 3 (delta 1), reused 3 (delta 1), pack-reused 0
+Unpacking objects: 100% (3/3), 264 bytes | 20.00 KiB/s, done.
+From https://github.com/kyj2212/LionClass
+ * branch            master     -> FETCH_HEAD
+   b7e8f5e..40f8ea2  master     -> origin/master
+*Auto-merging a.txt*
+CONFLICT (content): Merge conflict in a.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+// MERGING 모드
+kyj01@DESKTOP-SSJAGK2 MINGW64 /C/Users/kyj01/IdeaProjects/LionClass01 (master|MERGING)
+$ cat a.txt
+Hello
+nonono
+hihi
+<<<<<<< HEAD
+workspace B mod
+=======
+workspace A mod
+>>>>>>> 40f8ea28f6013aa5785b4b04f2ccc3eb6932b691
+
+// status 확인 시 commit 
+$ git status
+On branch master
+You have unmerged paths.
+  (fix conflicts and run "git commit")  // 충돌을 fix 하고 commit을 하거나
+  (use "git merge --abort" to abort the merge) // abort 옵션 통해 merge를 중단할 수 있음
+
+Unmerged paths:
+  (use "git add <file>..." to mark resolution) // 충돌 난 파일은 add 가 필요
+        both modified:   a.txt
+
+no changes added to commit (use "git add" and/or "git commit -a") // commit -a add 같이 진행
+
+// commit -> MERGING 모드 종료
+
+kyj01@DESKTOP-SSJAGK2 MINGW64 /C/Users/kyj01/IdeaProjects/LionClass01 (master|MERGING)
+$ git commit -am "merge a.txt in A and B"
+[master a42adb1] merge a.txt in A and B
+
+kyj01@DESKTOP-SSJAGK2 MINGW64 /C/Users/kyj01/IdeaProjects/LionClass01 (master)
+$ git push origin master
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (7/7), 660 bytes | 660.00 KiB/s, done.
+Total 7 (delta 2), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (2/2), completed with 1 local object.
+To https://github.com/kyj2212/LionClass.git
+   40f8ea2..a42adb1  master -> master
+```
+
+[https://www.daleseo.com/about](https://www.daleseo.com/about)
+
+06.28
+
+# Git clone
+
+```markdown
+mkdir aa
+cd aa
+git init
+git remote add origin https://github.com/jhs512/abc
+git pull origin master
+-----------------------
+git clone https://github.com/jhs512/abc aa
+```
+
+# —allow-unrelated-histories
+
+```bash
+// 권장 X
+git pull origin master --allow-unrelated-histories
+
+git push origin master -f
+
+```
+
+## 인코딩
+
+```bash
+영상참고
+```
+
+https://www.youtube.com/watch?v=0OusjW788o0
+
+## Win , Mac 협업
+
+```bash
+// Window
+git config --global core.autocrlf true
+git config --global core.ignorecase false
+
+// Mac
+git config --global core.autocrlf input
+```
+
+## add 취소
+
+```bash
+git rm --cached [파일명]
+```
+
+## .gitignore
+
+```bash
+
+```

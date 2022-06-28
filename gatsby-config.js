@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Yejin First Gatsby Site",
+    title: "YejinB",
     description: "예진의 첫 블로그입니다.",
     siteUrl: `https://yejinblog.gtsb.io/`,
   },
@@ -11,7 +11,7 @@ module.exports = {
       resolve: "gatsby-source-filesystem",
       options: {
         name: `blog`,
-        path: `${__dirname}/blog`,
+        path: `${__dirname}/blog/`,
       },
     },
     "gatsby-plugin-mdx",

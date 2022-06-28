@@ -8,6 +8,8 @@ import {
   navLinkItem,
   navLinkText,
   siteTitle,
+  content,
+  postname,
 } from "./Layout.module.css";
 
 function Layout({ pageTitle, children }) {
@@ -48,10 +50,13 @@ function Layout({ pageTitle, children }) {
         </ul>
       </nav>
 
-      <main>
+
+
+      <main className={content}>
         <h1 className={heading}>{pageTitle}</h1>
         {children}
       </main>
+
 
       <div>Copyright All Rights</div>
     </div>
